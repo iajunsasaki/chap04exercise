@@ -51,4 +51,9 @@ public class Fish extends Product {
 	public void setExpiresInDays(int expiresInDays) {
 		this.expiresInDays = expiresInDays;
 	}
+
+	@Override
+	public int getDiscountPrice(int percent) {
+		return getUnitPrice() * (percent + 5) * 100;
+	}
 }
