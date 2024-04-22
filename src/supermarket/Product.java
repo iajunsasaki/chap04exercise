@@ -5,13 +5,13 @@ package supermarket;
  */
 public class Product {
 	/** 商品名 */
-	private String name;
+	protected String name;
 
 	/** 商品種別 */
-	private String category;
+	protected String category;
 
 	/** 税抜価格 */
-	private int unitPrice;
+	protected int unitPrice;
 
 	public String getName() {
 		return name;
@@ -47,9 +47,12 @@ public class Product {
 	public Product(String name, String category, int unitPrice) {
 		// 演習０（復習）このコンストラクタを完成させましょう。
 		// クラス変数にそれぞれの引数の値を代入させます
-		this.setName(name);
-		this.setCategory(category);
-		this.setUnitPrice(unitPrice);
+//		this.setName(name);
+//		this.setCategory(category);
+//		this.setUnitPrice(unitPrice);
+		this.name = name;
+		this.category = category;
+		this.unitPrice = unitPrice;
 	}
 
 	// 演習０－２（復習）：Productクラス、Fishクラス、Clothingクラスに
