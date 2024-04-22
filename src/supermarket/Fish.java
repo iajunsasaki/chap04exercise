@@ -34,4 +34,20 @@ public class Fish extends Product {
 		// 演習２：toStringメソッドを完成させ，親クラスの「商品名」と「消費期限までの日数」を表示させてください
 		return "";
 	}
+
+	public float getWeightGrams() {
+		return weightGrams;
+	}
+
+	public void setWeightGrams(float weightGrams) {
+		this.weightGrams = weightGrams;
+	}
+
+	public int getExpiresInDays() {
+		return expiresInDays;
+	}
+
+	public void setExpiresInDays(int expiresInDays) {
+		this.expiresInDays = expiresInDays;
+	}
 }
