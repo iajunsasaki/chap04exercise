@@ -33,7 +33,7 @@ public class Fish extends Product {
 
 	public String toString() {
 		// 演習２：toStringメソッドを完成させ，親クラスの「商品名」と「消費期限までの日数」を表示させてください
-		return "商品名："+super.getName()+"、消費期限："+Integer.toString(getExpiresInDays());
+		return "商品名：" + super.getName() + "、消費期限：" + Integer.toString(getExpiresInDays());
 	}
 
 	public float getWeightGrams() {
