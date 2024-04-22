@@ -13,19 +13,58 @@ public class Product {
 	/** 税抜価格 */
 	private int unitPrice;
 
+	/** 数量 */
+	private int quantity;
+	
 	/**
 	 * コンストラクタ。
 	 * @param name 商品名
 	 * @param category 商品種別
 	 * @param unitPrice 税抜単価
+	 * @param quantity 数量
 	 */
-	public Product(String name, String category, int unitPrice) {
+	public Product(String name, String category, int unitPrice, int quantity) {
 		// 演習０（復習）このコンストラクタを完成させましょう。
 		//   クラス変数にそれぞれの引数の値を代入させます
+		this.name = name;
+		this.category = category;
+		this.unitPrice = unitPrice;
+		this.quantity = quantity;
 	}
 
 	// 演習０－２（復習）：Productクラス、Fishクラス、Clothingクラスに
 	//                     getterメソッドとsetterメソッドを実装してください
+	public String getName() {
+		return this.name;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public int getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(int unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
 	/**
 	 * 割引料金を計算する。１円以下は切り捨て

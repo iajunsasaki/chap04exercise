@@ -41,14 +41,32 @@ public class Suparmarket {
 		Suparmarket supermarket = new Suparmarket();
 		
 		// マグロ商品を準備
-		Fish tuna = new Fish("マグロ", 500, 100F, 2);
+		Fish tuna = new Fish("マグロ", 500, 100F, 2, 5);
+		Fish salmon = new Fish("鮭", 400, 100F, 2, 10);
+		Clothing cap = new Clothing("キャップ", 700, "赤", 20);
+		Clothing jeans = new Clothing("ジーンズ", 3000, "青", 5);
+		Product tofu = new Product("豆腐", "生鮮食品", 120, 40);
+		Product banana = new Product("バナナ", "生鮮食品", 200, 30);
+		Meat pork = new Meat("豚バラ", 350, 20);
+		Meat chicken = new Meat("鶏むね肉", 300, 50);
+		
+		System.out.println(tuna);
 		
 		// マグロを在庫に登録
 		supermarket.stock.add(tuna);
+		supermarket.stock.add(salmon);
+		supermarket.stock.add(cap);
+		supermarket.stock.add(jeans);
+		supermarket.stock.add(tofu);
+		supermarket.stock.add(banana);
+		supermarket.stock.add(chicken);
+		supermarket.stock.add(pork);
 		
 		for (Product product : supermarket.stock) {
-			System.out.println("在庫：" + tuna);
+			System.out.println("在庫：" + product);
 		}
+		
+		System.out.println("在庫の合計価値は" + supermarket.getAllProductValue() + "円です。頑張って良いものをお客様に提供しましょう！");
 	}
 	
 	/** 
@@ -58,6 +76,10 @@ public class Suparmarket {
 	
 	public int getAllProductValue() {
 		// 実装しないと0円のまま…
-		return 0;
+		int total = 0;
+		for (Product product : this.stock) {
+			total += product.getUnitPrice() * product.getQuantity();
+		}
+		return total;
 	}
 }
