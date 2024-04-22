@@ -6,10 +6,10 @@ package supermarket;
 public class Product {
 	/** 商品名 */
 	private String name;
-	
+
 	/** 商品種別 */
 	private String category;
-	
+
 	/** 税抜価格 */
 	private int unitPrice;
 
@@ -39,23 +39,25 @@ public class Product {
 
 	/**
 	 * コンストラクタ。
-	 * @param name 商品名
-	 * @param category 商品種別
+	 * 
+	 * @param name      商品名
+	 * @param category  商品種別
 	 * @param unitPrice 税抜単価
 	 */
 	public Product(String name, String category, int unitPrice) {
 		// 演習０（復習）このコンストラクタを完成させましょう。
-		//   クラス変数にそれぞれの引数の値を代入させます
-		this.name=name;
-		this.category=category;
-		this.unitPrice=unitPrice;
+		// クラス変数にそれぞれの引数の値を代入させます
+		this.name = name;
+		this.category = category;
+		this.unitPrice = unitPrice;
 	}
 
 	// 演習０－２（復習）：Productクラス、Fishクラス、Clothingクラスに
-	//                     getterメソッドとsetterメソッドを実装してください
+	// getterメソッドとsetterメソッドを実装してください
 
 	/**
 	 * 割引料金を計算する。１円以下は切り捨て
+	 * 
 	 * @param percent 割引パーセント
 	 * @return 割引された税抜単価
 	 */

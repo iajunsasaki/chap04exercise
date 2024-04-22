@@ -6,7 +6,8 @@ package supermarket;
 public class Vegitable extends Product {
 	/**
 	 * コンストラクタ。
-	 * @param name 商品名
+	 * 
+	 * @param name      商品名
 	 * @param unitPrice 税抜単価
 	 */
 	public Vegitable(String name, int unitPrice) {
