@@ -22,6 +22,9 @@ public class Product {
 	public Product(String name, String category, int unitPrice) {
 		// 演習０（復習）このコンストラクタを完成させましょう。
 		//   クラス変数にそれぞれの引数の値を代入させます
+		this.name=name;
+		this.category=category;
+		this.unitPrice=unitPrice;
 	}
 
 	// 演習０－２（復習）：Productクラス、Fishクラス、Clothingクラスに
