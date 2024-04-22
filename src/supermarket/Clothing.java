@@ -7,6 +7,14 @@ public class Clothing extends Product {
 	/** 商品の色 */
 	private String color;
 
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 	/**
 	 * コンストラクタ。
 	 * @param name 商品名
