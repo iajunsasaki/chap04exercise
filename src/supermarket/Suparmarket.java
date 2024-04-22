@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 public class Suparmarket {
 	public static void main(String[] args) {
+		// sandbox!!!!!
+		
 		// 演習０－１（復習）：Productクラスのコンストラクタを完成させてください
 		// 演習０－２（復習）：Productクラス、Fishクラス、Clothingクラスに
 		//                     getterメソッドとsetterメソッドを実装してください
