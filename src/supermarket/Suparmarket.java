@@ -7,57 +7,78 @@ import java.util.ArrayList;
  */
 public class Suparmarket {
 	public static void main(String[] args) {
-		// 演習０－１（復習）：Productクラスのコンストラクタを完成させてください
-		// 演習０－２（復習）：Productクラス、Fishクラス、Clothingクラスに
-		// getterメソッドとsetterメソッドを実装してください
-
-		// 演習１：このパッケージにはProductクラス，そしてそれを継承するFishクラスとClothingクラスがあります。
-		// もう一つ、Productクラスを継承するMeatクラスを定義してください
-		// コンストラクタ内でsuperによるコンストラクタ呼び出しを活用します。
-
-		// 演習２：FishクラスにあるtoStringメソッドを完成させてください
-		// 完成させるために必要な変更を施してください
-
-		// 演習３：FishクラスにてProductクラスで定義されているdiscountメソッドをオーバーライドしてください
-		// 魚は通常の商品より5パーセント余分に割引させたいです。つまり通常商品を10％割引したい場合にFishクラス
-		// の場合は15％割引します
-
-		// 演習４：Supermarketクラスのメンバ変数にはstockというArrayListがあります（※）
-		// stockは店内在庫を表現します。現在はFish型のマグロが登録されています。
-		// 生鮮魚商品（Fish型のオブジェクト）を１つ、衣服（Clothing型のオブジェクト）を２つ
-		// その他（Product型のオブジェクト）を２つ作成（変数宣言＋new）して在庫登録してください。
-		// ※ArrayListとは配列の中身をプログラム内で安心して追加したり削除したりできる便利クラスです
-
-		// ワンモアマイル１：同様にMeatクラスも在庫登録してみましょう。
-
-		// ワンモアマイル２：プログラムを拡張してみましょう。在庫管理するにはProductクラスに数量を表す
-		// メンバ変数があるととても便利です。つまり、マグロ100gのパックは例えば200パック入荷して在庫登録
-		// すればそれがわかるようにしたいです。
-
-		// ワンモアマイル３：プログラムを拡張してみましょう。Productクラスには税抜き単価と数量が管理できるように
-		// なりました。Supermarketクラスが持っている在庫の価値を計算できるSupermarketクラスのgetAllProductValue
-		// メソッドを実装して，mainメソッドから呼び出してください
-
 		Suparmarket supermarket = new Suparmarket();
 
-		// マグロ商品を準備
-		Fish tuna = new Fish("マグロ", 500, 100F, 2);
+		Food osechi = new Food("おせち","食品",100,100,"２か月後","おせち");
+		receiver asan = new receiver("小泉純一郎",100,"2024-12-31",osechi);
+		
 
-		// マグロを在庫に登録
-		supermarket.stock.add(tuna);
-
-		for (Product product : supermarket.stock) {
-			System.out.println("在庫：" + tuna);
-		}
+		receiver bsan = new receiver("小泉純一郎",99,"2024-12-31",osechi);
+		supermarket.addAmount(asan);
+		supermarket.removeAmount(bsan);
+		
+		System.out.println(supermarket.stock.get(0).name);
+		
 	}
 
 	/**
 	 * 在庫リスト
 	 */
 	private ArrayList<Product> stock = new ArrayList<Product>();
+	
+	// 注文済みのリスト
+	private ArrayList<receiver> ordered = new ArrayList<receiver>();
+	
+	// 注文するメソッド
+	// 商品を強制的に注文するならば引数；duplicateOKをtrueにして渡す。
+	// duplicateOKがfalseの場合、重複していたら注文しない。
+	// 重複していなければ注文する。
+	
+	// 本当は、注文履歴を追加していくだけのリストと、
+	// 重複した注文を許さないためのリスト（注文が届くたびに要素を削除する）の２つを
+	// 用意するつもりだったが、前者のみの用意となってしまった。
+	public void order(receiver receiver, boolean duplicateOK) {
+		
+		// 強制的に注文リストに追加
+		if(duplicateOK) {
+			ordered.add(receiver);
+		}else {
+			// 注文リストにあるかチェック
+			for(receiver tryToOrder : ordered) {
+				// すでにあるならば処理を終了する
+				if(tryToOrder.product.name.equals(receiver.product.name)) {
+					return;
+				}
+			}
+			// for文を回しきったら（注文リストに無ければ）注文する
+			ordered.add(receiver);
+		}
+	}
 
-	public int getAllProductValue() {
-		// 実装しないと0円のまま…
-		return 0;
+	// 入荷処理
+	public void addAmount(receiver receiver) {
+		// 注文したことがある品物ならば
+		for(Product listedProduct : stock) {
+			if(listedProduct.name.equals(receiver.product.name)) {
+				// 量（在庫）を追加する
+				listedProduct.addAmount(receiver);
+				return;
+			}
+		}
+		// リストになければ商品を登録する
+		stock.add(receiver.product);
+	}
+	
+	// 品出し
+	public void removeAmount(receiver receiver) {
+		// 注文したことがある商品ならば
+		for(Product listedProduct : stock) {
+			if(listedProduct.name.equals(receiver.product.name)) {
+				// 在庫を減らす
+				listedProduct.removeAmount(receiver);
+				return;
+			}
+		}
+		// ない商品を品出しすることは想定していないが、エラー処理とかできるとよさそう
 	}
 }
